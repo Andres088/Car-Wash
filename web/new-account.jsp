@@ -6,12 +6,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <div class="jumbotron text-center jumbito">
+
+        <div class="jumbotron text-center jumbito">
             <h1>Car Wash Location</h1>
-    </div>
+        </div>
         <div class="container">
             <div class="row">
-                
+
                 <div class="col-sm-6">
                     <form>
                         <div class="form-group">
@@ -23,16 +24,17 @@
                         <button type="submit" class="btn btn-primary">Registrarse</button>
                     </form>
                 </div>
-                
+
                 <div class="col-sm-6">
                     <img src="images/carwash2.jpg" class="img-fluid" alt="Responsive image">
                     <p>Texto sobre los beneficios de la app (estadísticas, porcentajes, etc.)</p>
                 </div>
             </div>
             <a href="nuevocarro.jsp">Ir a principal</a>
+            <div class="push"></div>
         </div>
-        <footer id="pie" class="footer text-center">
-            <p>Desarrollado por Grupo 5.</p>
-        </footer>
+        <div class="footer">
+            <p>Copyright (c) 2008</p>
+        </div>
     </body>
 </html>

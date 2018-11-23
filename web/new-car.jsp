@@ -6,9 +6,10 @@
         <title>JSP Page</title>
     </head>
     <body>
-    <div class="jumbotron text-center jumbito">
+
+        <div class="jumbotron text-center jumbito">
             <h1>Car Wash Location</h1>
-    </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-sm-4"></div>
@@ -49,9 +50,10 @@
                 </div>
                 <div class="col-sm-4"></div>
             </div>
+            <div class="push"></div>
         </div>
-        <footer id="pie" class="footer text-center">
-            <p>Desarrollado por Grupo 5.</p>
-        </footer>
+        <div class="footer">
+            <p>Copyright (c) 2008</p>
+        </div>
     </body>
 </html>

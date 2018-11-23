@@ -6,34 +6,75 @@
         <link href="bootstrap/css/estilo.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
-    
+
     <body>
 
-        <% Usuario user = (Usuario)request.getAttribute("user");
-           String specifications = (String)request.getAttribute("specifications");
+        <% Usuario user = (Usuario) request.getAttribute("user");
+            String specifications = (String) request.getAttribute("specifications");
         %>  
+
+        <script src="geolocation/geolocation.js" type="text/javascript"></script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA1UInbb8xXBD-7e-1lXM3bO_QoMn-VhM&callback=initMap">
+        </script>
 
         <div class="jumbotron text-center jumbito">
             <h1>Car Wash Location</h1>
         </div>
         <div class="container">
-            <div class="row filita">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4"> 
-                    <h3>Car Wash Top</h3>
-                </div>   
-                <div class="col-sm-4"></div>   
-            </div>
-            <div class="row">
-                <div class="col-sm-2"></div>
-                <div class="col-sm-2">
-                    <div class="btn-group-vertical">
-                        <button type="button" class="btn btn-secondary">Carwash Top</button>
-                        <button type="button" class="btn btn-secondary">Lavaderos Top</button>
-                        <button type="button" class="btn btn-secondary">Registro</button>
+            <div class="row filita"> 
+                <div class="col-sm-4">
+                    <div class="alert alert-warning encabezado" role="alert">
+                        Tu ubicación
                     </div>
                 </div>
+                <div class="col-sm-5">
+                    <div class="alert alert-primary encabezado" role="alert">
+                        Escoge un local
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="alert alert-success encabezado" role="alert">
+                        Tu perfil
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
                 <div class="col-sm-4">
+                    <div id="map" class="mapita"></div>
+                    <div class="alert alert-dark" role="alert">
+                        Lista de atenciones
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Servicio</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>14/11/1989</td>
+                                <td>Lavado</td>
+                                <td>En proceso</td>
+                            </tr>
+                            <tr>
+                                <td>14/11/1989</td>
+                                <td>Planchado</td>
+                                <td>Terminado</td>
+                            </tr>
+                            <tr>
+                                <td>14/11/1989</td>
+                                <td>Cocinado</td>
+                                <td>Terminado</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-sm-5">
                     <div class="list-group">
                         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
                             <img src="images/carwash_mini1.PNG" class="img-fluid" alt="Responsive image">
@@ -64,22 +105,22 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-sm-1">
-                    <div class="card" style="width: 10rem;">
-                        <img class="card-img-top" src="images/user-icon.png" alt="">
+                <div class="col-sm-3">
+                    <div class="card">
+                        <img class="card-img-top " src="images/user-icon.png" alt="">
                         <div class="card-body">
                             <h5 class="card-title"><%=user.getNom()%></h5>
                             <p class="card-text"><%=specifications%></p>
-                            <a href="#" class="btn btn-secondary">Cambiar carro</a>
+                            <p class="card-text">Cliente nuevo</p>
+                            <p class="card-text">Visitas acumuladas: 5</p>
+                            <p class="card-text">Puntos acumulados: 200</p>
                         </div>
                     </div> 
                 </div>
-                <div class="col-sm-1"></div>
-                <div class="col-sm-2"></div>
             </div>
         </div>
-        <footer id="pie" class="footer text-center">
-            <p>Desarrollado por Grupo 5.</p>
-        </footer>
+        <div class="footer">
+            <p>Copyright (c) 2008</p>
+        </div>
     </body>
 </html>

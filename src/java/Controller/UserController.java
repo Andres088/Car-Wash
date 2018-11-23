@@ -63,11 +63,11 @@ public class UserController extends HttpServlet {
             Usuario user = db.buscaUsuario(name);
             ArrayList<Auto> cars = db.listaAuto(user.getCodusu());
             
-            String specifications = "No tiene carro registrado.";
+            String specifications = "";
             
             if (cars.size()>0){
                 Auto car = cars.get(0);
-                specifications = car.getMarca()+ " "+car.getModelo()+" "+car.getPlaca();
+                specifications = "Te encuentras manejando un: "+car.getMarca()+ " "+car.getModelo();
             }
             
             request.setAttribute("user",user);

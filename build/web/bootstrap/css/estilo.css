@@ -1,15 +1,28 @@
+#map {
+        height: 400px;
+        width: 100%;
+      }
 
-#pie {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #60d0e7;
-    color: black;
-    text-align: center;
-    padding-top: 1%;
-
+html {
+  position: relative;
+  min-height: 100%;
 }
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #60d0e7;
+  color: black;
+  text-align: center;
+}
+
+/*https://stackoverflow.com/questions/21324395/bootstrap-3-flush-footer-to-bottom-not-fixed/31171291*/
 
 .jumbito{
     background-color: #60d0e7;
@@ -26,4 +39,20 @@
 
 .fotocar{
     padding-bottom: 5%;
+}
+
+.card{
+    width: 100%;
+}
+
+.encabezado{
+    text-align: center;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.atenciones{
+    padding-top: 600 px;
 }

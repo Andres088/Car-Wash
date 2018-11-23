@@ -7,8 +7,11 @@
     </head>
     <body>
         <% String respuesta = String.valueOf(request.getAttribute("response"));
-           if (respuesta.equals("null")) respuesta = "";
-        %>    
+            if (respuesta.equals("null")) {
+                respuesta = "";
+            }
+        %>
+
         <div class="jumbotron text-center jumbito">
             <h1>Car Wash Location</h1>
         </div>
@@ -36,9 +39,10 @@
                     <h5><%=respuesta%></h5>
                 </div>
             </div>
+        </div> 
+
+        <div class="footer">
+            <p>Copyright (c) 2008</p>
         </div>
-        <footer id="pie" class="footer text-center">
-            <p>Desarrollado por Grupo 5.</p>
-        </footer>
     </body>
 </html>
