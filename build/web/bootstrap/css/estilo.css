@@ -1,0 +1,29 @@
+
+#pie {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #60d0e7;
+    color: black;
+    text-align: center;
+    padding-top: 1%;
+
+}
+
+.jumbito{
+    background-color: #60d0e7;
+    
+}
+
+.login{
+    padding-right: 20%;
+}
+
+.filita{
+    padding-bottom: 1%;
+}
+
+.fotocar{
+    padding-bottom: 5%;
+}
