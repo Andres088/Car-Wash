@@ -1,246 +1,125 @@
--- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
---
--- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2018 a las 03:04:20
--- Versión del servidor: 10.1.9-MariaDB
--- Versión de PHP: 5.6.15
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Versión del servidor:         10.1.36-MariaDB - mariadb.org binary distribution
+-- SO del servidor:              Win32
+-- HeidiSQL Versión:             9.5.0.5196
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
---
--- Base de datos: `carwash`
---
 
--- --------------------------------------------------------
+-- Volcando estructura de base de datos para carwash
+CREATE DATABASE IF NOT EXISTS `carwash` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `carwash`;
 
---
--- Estructura de tabla para la tabla `tbacceso`
---
-
-CREATE TABLE `tbacceso` (
-  `nomusu` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL,
-  `dni` varchar(8) NOT NULL
+-- Volcando estructura para tabla carwash.tbatencion
+CREATE TABLE IF NOT EXISTS `tbatencion` (
+  `codatencion` int(6) NOT NULL,
+  `codusu` int(6) DEFAULT NULL,
+  `codlocal` int(6) DEFAULT NULL,
+  `placa` varchar(50) DEFAULT NULL,
+  `servicios` varchar(100) DEFAULT NULL,
+  `estado` varchar(25) DEFAULT NULL,
+  `monto` double DEFAULT NULL,
+  `puntos` int(6) DEFAULT NULL,
+  `fecha` varchar(25) DEFAULT NULL,
+  `hora` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`codatencion`),
+  KEY `FK_atencion_usuario` (`codusu`),
+  KEY `FK_atencion_local` (`codlocal`),
+  CONSTRAINT `FK_atencion_local` FOREIGN KEY (`codlocal`) REFERENCES `tbcarwash` (`codlocal`),
+  CONSTRAINT `FK_atencion_usuario` FOREIGN KEY (`codusu`) REFERENCES `tbusuario` (`codusu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tbacceso`
---
+-- Volcando datos para la tabla carwash.tbatencion: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `tbatencion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbatencion` ENABLE KEYS */;
 
-INSERT INTO `tbacceso` (`nomusu`, `pass`, `dni`) VALUES
-('utp', '123456', '76000000');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbauto`
---
-
-CREATE TABLE `tbauto` (
+-- Volcando estructura para tabla carwash.tbauto
+CREATE TABLE IF NOT EXISTS `tbauto` (
   `placa` varchar(50) NOT NULL,
-  `marca` varchar(50) DEFAULT NULL,
-  `modelo` varchar(50) DEFAULT NULL,
+  `marca` varchar(50) NOT NULL,
+  `modelo` varchar(50) NOT NULL,
   `des` varchar(50) DEFAULT NULL,
-  `dni` varchar(8) NOT NULL
+  `codusu` int(6) NOT NULL,
+  PRIMARY KEY (`placa`),
+  KEY `FK_auto_usuario` (`codusu`),
+  CONSTRAINT `FK_auto_usuario` FOREIGN KEY (`codusu`) REFERENCES `tbusuario` (`codusu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tbauto`
---
+-- Volcando datos para la tabla carwash.tbauto: ~1 rows (aproximadamente)
+/*!40000 ALTER TABLE `tbauto` DISABLE KEYS */;
+INSERT INTO `tbauto` (`placa`, `marca`, `modelo`, `des`, `codusu`) VALUES
+	('14GH5', 'Toyota', 'Yaris', 'Auto de color rojo', 1);
+/*!40000 ALTER TABLE `tbauto` ENABLE KEYS */;
 
-INSERT INTO `tbauto` (`placa`, `marca`, `modelo`, `des`, `dni`) VALUES
-('14GH5', 'Toyota', 'Yaris', 'Auto de color rojo', '1'),
-('er333', 'hyndai', 'ducati', 'dadada', '2');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbcarwash`
---
-
-CREATE TABLE `tbcarwash` (
-  `codcar` int(6) NOT NULL,
-  `direc` varchar(50) NOT NULL DEFAULT '0',
-  `hora` varchar(50) NOT NULL DEFAULT '0.0',
-  `telf` varchar(10) NOT NULL DEFAULT '0',
-  `punt` double(5,1) NOT NULL DEFAULT '0.0'
+-- Volcando estructura para tabla carwash.tbcalificacion
+CREATE TABLE IF NOT EXISTS `tbcalificacion` (
+  `codcali` int(6) NOT NULL,
+  `codlocal` int(6),
+  `codusu` int(6),
+  `comentario` varchar(300) DEFAULT NULL,
+  `score` int(1) NOT NULL,
+  `fecha` varchar(25) NOT NULL,
+  `hora` varchar(25) NOT NULL,
+  PRIMARY KEY (`codcali`),
+  KEY `FK_calificacion_carwash` (`codlocal`),
+  KEY `FK_calificacion_usuario` (`codusu`),
+  CONSTRAINT `FK_calificacion_carwash` FOREIGN KEY (`codlocal`) REFERENCES `tbcarwash` (`codlocal`),
+  CONSTRAINT `FK_calificacion_usuario` FOREIGN KEY (`codusu`) REFERENCES `tbusuario` (`codusu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tbcarwash`
---
+-- Volcando datos para la tabla carwash.tbcalificacion: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `tbcalificacion` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbcalificacion` ENABLE KEYS */;
 
-INSERT INTO `tbcarwash` (`codcar`, `direc`, `hora`, `telf`, `punt`) VALUES
-(1, 'La Molina', 'Lun a Vier 10am-6pm', '73156201', 8.1),
-(2, 'La Molina', 'Mar a Jue 12pm-8pm', '54201562', 7.2),
-(3, 'Surco', 'Jue a Dom 10am-4pm', '61235488', 7.0),
-(4, 'Centro', 'Lue a Sab 10pm-5pm', '94520811', 5.8),
-(5, 'San Isidro', 'Mier a Vier 11pm-9pm', '74152085', 5.3),
-(6, 'San Isidro', 'Mar a Jue 10pm-7pm', '76214598', 5.7);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tblavador`
---
-
-CREATE TABLE `tblavador` (
-  `codlav` int(5) NOT NULL,
-  `nom` varchar(50) NOT NULL DEFAULT '0',
-  `hora` varchar(50) NOT NULL DEFAULT '0',
-  `punt` double(5,1) NOT NULL DEFAULT '0.0'
+-- Volcando estructura para tabla carwash.tbcarwash
+CREATE TABLE IF NOT EXISTS `tbcarwash` (
+  `codlocal` int(6) NOT NULL,
+  `codusu` int(6) NOT NULL,
+  `nombre` varchar(50) DEFAULT NULL,
+  `servicios` varchar(100) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `distrito` varchar(50) DEFAULT NULL,
+  `telefono` varchar(9) DEFAULT NULL,
+  `horario` varchar(100) DEFAULT NULL,
+  `disponiblidad` varchar(25) DEFAULT NULL,
+  `latitud` varchar(25) DEFAULT NULL,
+  `longitud` varchar(25) DEFAULT NULL,
+  `imagen` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`codlocal`),
+  KEY `FK_carwash_usuario` (`codusu`),
+  CONSTRAINT `FK_carwash_usuario` FOREIGN KEY (`codusu`) REFERENCES `tbusuario` (`codusu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `tblavador`
---
+-- Volcando datos para la tabla carwash.tbcarwash: ~0 rows (aproximadamente)
+/*!40000 ALTER TABLE `tbcarwash` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbcarwash` ENABLE KEYS */;
 
-INSERT INTO `tblavador` (`codlav`, `nom`, `hora`, `punt`) VALUES
-(1, 'Jose Ceballos', 'Lunes a Viernes 5pm-7pm', 7.5),
-(2, 'Erick Garcia', 'Sabado 10am-5pm', 8.0),
-(3, 'Manuel Jimenez', 'Martes a Jueves 10am-7pm', 5.5),
-(4, 'Jose Luis Sanchez', 'Lun Mar Mier 8am-5pm', 5.2),
-(5, 'Pablo Cano', 'Jue Vie 8am-7pm', 7.2),
-(6, 'Ivan Arenas', 'Dom 11pm-2pm', 6.0);
+-- Volcando estructura para tabla carwash.tbusuario
+CREATE TABLE IF NOT EXISTS `tbusuario` (
+  `codusu` int(6) NOT NULL AUTO_INCREMENT,
+  `nomusu` varchar(50) NOT NULL DEFAULT '0',
+  `pass` varchar(50) NOT NULL DEFAULT '0',
+  `nom` varchar(60) NOT NULL DEFAULT '0',
+  `correo` varchar(50) NOT NULL DEFAULT '0',
+  `telf` varchar(9) NOT NULL DEFAULT '0',
+  `direc` varchar(70) NOT NULL DEFAULT '0',
+  `edad` int(3) NOT NULL DEFAULT '0',
+  `sexo` varchar(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`codusu`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
+-- Volcando datos para la tabla carwash.tbusuario: ~1 rows (aproximadamente)
+/*!40000 ALTER TABLE `tbusuario` DISABLE KEYS */;
+INSERT INTO `tbusuario` (`codusu`, `nomusu`, `pass`, `nom`, `correo`, `telf`, `direc`, `edad`, `sexo`) VALUES
+	(1, 'utp', '123', 'usuario1', 'utp@hotmail.com', '959406132', 'Av. Arequipa 2560 - Centro de Lima', 25, 'Hombre');
+/*!40000 ALTER TABLE `tbusuario` ENABLE KEYS */;
 
---
--- Estructura de tabla para la tabla `tbservlavado`
---
-
-CREATE TABLE `tbservlavado` (
-  `codserv` int(11) NOT NULL,
-  `tipolav` varchar(50) NOT NULL DEFAULT '0',
-  `tipopag` varchar(50) NOT NULL DEFAULT '0',
-  `placa` varchar(50) NOT NULL,
-  `codlav` int(5) DEFAULT NULL,
-  `codcar` int(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbservlavado`
---
-
-INSERT INTO `tbservlavado` (`codserv`, `tipolav`, `tipopag`, `placa`, `codlav`, `codcar`) VALUES
-(4, 'Basico', 'Efectivo', '14GH5', 1, 2);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tbusuario`
---
-
-CREATE TABLE `tbusuario` (
-  `dni` varchar(8) NOT NULL,
-  `nom` varchar(30) NOT NULL,
-  `correo` varchar(30) NOT NULL,
-  `telf` varchar(9) NOT NULL,
-  `direc` varchar(30) NOT NULL,
-  `edad` int(11) NOT NULL,
-  `sexo` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tbusuario`
---
-
-INSERT INTO `tbusuario` (`dni`, `nom`, `correo`, `telf`, `direc`, `edad`, `sexo`) VALUES
-('74000000', 'Jose Diaz', 'nose@jaja.com', '55555555', 'desconocida', 19, 'Hombre'),
-('75000000', 'Loco', 'loco@jaja.com', '999999999', 'desconocida', 27, 'Hombre'),
-('76000000', 'fulano de tal', 'nose@jaja.com', '55555555', 'desconocida', 22, 'Hombre');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `tbacceso`
---
-ALTER TABLE `tbacceso`
-  ADD PRIMARY KEY (`nomusu`),
-  ADD KEY `dni` (`dni`);
-
---
--- Indices de la tabla `tbauto`
---
-ALTER TABLE `tbauto`
-  ADD PRIMARY KEY (`placa`),
-  ADD KEY `codigousuario` (`dni`) USING BTREE;
-
---
--- Indices de la tabla `tbcarwash`
---
-ALTER TABLE `tbcarwash`
-  ADD PRIMARY KEY (`codcar`);
-
---
--- Indices de la tabla `tblavador`
---
-ALTER TABLE `tblavador`
-  ADD PRIMARY KEY (`codlav`);
-
---
--- Indices de la tabla `tbservlavado`
---
-ALTER TABLE `tbservlavado`
-  ADD PRIMARY KEY (`codserv`),
-  ADD KEY `FK_servlavado_auto` (`placa`),
-  ADD KEY `FK_servlavado_lavador` (`codlav`),
-  ADD KEY `FK_servlavado_carwash` (`codcar`);
-
---
--- Indices de la tabla `tbusuario`
---
-ALTER TABLE `tbusuario`
-  ADD PRIMARY KEY (`dni`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `tbcarwash`
---
-ALTER TABLE `tbcarwash`
-  MODIFY `codcar` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT de la tabla `tblavador`
---
-ALTER TABLE `tblavador`
-  MODIFY `codlav` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT de la tabla `tbservlavado`
---
-ALTER TABLE `tbservlavado`
-  MODIFY `codserv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `tbacceso`
---
-ALTER TABLE `tbacceso`
-  ADD CONSTRAINT `fk_acceso_usuario` FOREIGN KEY (`dni`) REFERENCES `tbusuario` (`dni`);
-
---
--- Filtros para la tabla `tbservlavado`
---
-ALTER TABLE `tbservlavado`
-  ADD CONSTRAINT `FK_servlavado_auto` FOREIGN KEY (`placa`) REFERENCES `tbauto` (`placa`),
-  ADD CONSTRAINT `FK_servlavado_carwash` FOREIGN KEY (`codcar`) REFERENCES `tbcarwash` (`codcar`),
-  ADD CONSTRAINT `FK_servlavado_lavador` FOREIGN KEY (`codlav`) REFERENCES `tblavador` (`codlav`);
-
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
