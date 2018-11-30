@@ -35,8 +35,10 @@ CREATE TABLE IF NOT EXISTS `tbatencion` (
   CONSTRAINT `FK_atencion_usuario` FOREIGN KEY (`codusu`) REFERENCES `tbusuario` (`codusu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla carwash.tbatencion: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla carwash.tbatencion: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbatencion` DISABLE KEYS */;
+INSERT INTO `tbatencion` (`codatencion`, `codusu`, `codlocal`, `placa`, `servicios`, `estado`, `monto`, `puntos`, `fecha`, `hora`) VALUES
+	(1, 1, 1, '14GH5', 'Masaje prostatico', 'Atendiendo', 200, 2000, '30/11/2018', '06:46');
 /*!40000 ALTER TABLE `tbatencion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla carwash.tbauto
@@ -44,17 +46,17 @@ CREATE TABLE IF NOT EXISTS `tbauto` (
   `placa` varchar(50) NOT NULL,
   `marca` varchar(50) NOT NULL,
   `modelo` varchar(50) NOT NULL,
-  `des` varchar(50) DEFAULT NULL,
+  `ano` int(4) NOT NULL,
   `codusu` int(6) NOT NULL,
   PRIMARY KEY (`placa`),
   KEY `FK_auto_usuario` (`codusu`),
   CONSTRAINT `FK_auto_usuario` FOREIGN KEY (`codusu`) REFERENCES `tbusuario` (`codusu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla carwash.tbauto: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla carwash.tbauto: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbauto` DISABLE KEYS */;
-INSERT INTO `tbauto` (`placa`, `marca`, `modelo`, `des`, `codusu`) VALUES
-	('14GH5', 'Toyota', 'Yaris', 'Auto de color rojo', 1);
+INSERT INTO `tbauto` (`placa`, `marca`, `modelo`, `ano`, `codusu`) VALUES
+	('14GH5', 'Toyota', 'Yaris', 2009, 1);
 /*!40000 ALTER TABLE `tbauto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla carwash.tbcalificacion
@@ -87,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `tbcarwash` (
   `distrito` varchar(50) DEFAULT NULL,
   `telefono` varchar(9) DEFAULT NULL,
   `horario` varchar(100) DEFAULT NULL,
-  `disponiblidad` varchar(25) DEFAULT NULL,
+  `disponibilidad` varchar(25) DEFAULT NULL,
   `latitud` varchar(25) DEFAULT NULL,
   `longitud` varchar(25) DEFAULT NULL,
   `imagen` varchar(50) DEFAULT NULL,
@@ -98,6 +100,8 @@ CREATE TABLE IF NOT EXISTS `tbcarwash` (
 
 -- Volcando datos para la tabla carwash.tbcarwash: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbcarwash` DISABLE KEYS */;
+INSERT INTO `tbcarwash` (`codlocal`, `codusu`, `nombre`, `servicios`, `direccion`, `distrito`, `telefono`, `horario`, `disponibilidad`, `latitud`, `longitud`, `imagen`) VALUES
+	(1, 2, 'Las Nenitas', 'Todo papi', 'Av. Venezuela 395', 'Cercado', '999948184', 'Todos los dias', 'Ya mismo', '', NULL, NULL);
 /*!40000 ALTER TABLE `tbcarwash` ENABLE KEYS */;
 
 -- Volcando estructura para tabla carwash.tbusuario
@@ -112,12 +116,13 @@ CREATE TABLE IF NOT EXISTS `tbusuario` (
   `edad` int(3) NOT NULL DEFAULT '0',
   `sexo` varchar(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codusu`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla carwash.tbusuario: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbusuario` DISABLE KEYS */;
 INSERT INTO `tbusuario` (`codusu`, `nomusu`, `pass`, `nom`, `correo`, `telf`, `direc`, `edad`, `sexo`) VALUES
-	(1, 'utp', '123', 'usuario1', 'utp@hotmail.com', '959406132', 'Av. Arequipa 2560 - Centro de Lima', 25, 'Hombre');
+	(1, 'utp', '123', 'usuario1', 'utp@hotmail.com', '959406132', 'Av. Arequipa 2560 - Centro de Lima', 25, 'Hombre'),
+	(2, 'colaborador1', '123', 'Carlos Perez', 'cperez@robajato.com', '999999999', 'Av. Alfonso Ugarte 345 - Centro de Lima', 29, 'Hombre');
 /*!40000 ALTER TABLE `tbusuario` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
