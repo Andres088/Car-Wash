@@ -21,6 +21,8 @@ import java.util.logging.Logger;
  */
 public class DataBase 
 {
+    
+    
     public ArrayList<Lavador> listaLavador()
     {
         ArrayList<Lavador>data=new ArrayList<>();
@@ -62,16 +64,26 @@ public class DataBase
             
             CarWash obj;
             while(rs.next()){
-                obj=new CarWash();
-                obj.setCodcar(rs.getInt("codcar"));
-                obj.setDirec(rs.getString("direc"));
-                obj.setHora(rs.getString("hora"));
-                obj.setTelf(rs.getString("telf"));
-                obj.setPunt(rs.getDouble("punt"));
+                obj= new CarWash();                
+                obj.setCodlocal(rs.getInt("codlocal"));
+                obj.setCodusu(rs.getInt("codusu"));
+                obj.setDireccion(rs.getString("direccion"));
+                obj.setDisponiblidad(rs.getString("disponibilidad"));
+                obj.setDistrito(rs.getString("distrito"));
+                obj.setHorario(rs.getString("horario"));
+                obj.setImagen(rs.getString("imagen"));
+                obj.setLatitud(rs.getString("latitud"));
+                obj.setLongitud(rs.getString("longitud"));
+                obj.setNombre(rs.getString("nombre"));
+                obj.setServicios(rs.getString("servicios"));
+                obj.setTelefono(rs.getString("telefono"));
                 data.add(obj);
             }
         } catch (SQLException ex) {
             Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+            CarWash obj = new CarWash();
+            obj.setNombre(ex.getMessage());
+            data.add(obj);
         }
         return data;
     }

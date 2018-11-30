@@ -33,13 +33,13 @@
                     <a class="list-group-item list-group-item-action flex-column align-items-start">
                         <img src="images/carwash_mini1.PNG" class="img-fluid" alt="Responsive image">
                         <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Lavadera Angamos</h5>
+                            <h5 class="mb-1">Lavadero Angamos</h5>
                             <small>Score: 4.8/5</small>
                         </div>
                         <p class="mb-1">Servicios ofrecidos: aspirado, planchado, lavado.</p>
-                        <p>Ubicación: Angamos Este 1245 Surquillo</p>
-                        <p>Lunes a Viernes de 10:00 am a 6:00 pm</p>
-                        <p>Teléfono: 948184046</p>
+                        <p class="mb-1">Ubicación: Angamos Este 1245 Surquillo</p>
+                        <p class="mb-1">Lunes a Viernes de 10:00 am a 6:00 pm</p>
+                        <p class="mb-1">Teléfono: 948184046</p>
                     </a>
                 </div>
             </div>

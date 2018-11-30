@@ -21,7 +21,7 @@
                     <img src="images/carwash1.png" class="img-fluid" alt="Responsive image">
                 </div>
                 <div class="col-sm-6 login">
-                    <form action="UserController" method="post">
+                    <form action="Controller" method="post">
 
                         <input type="hidden" name="method" value="sign_in">	
 
