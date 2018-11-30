@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "UserController", urlPatterns = {"/UserController"})
 
-public class UserController extends HttpServlet {
+public class Controller extends HttpServlet {
     
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,6 +32,8 @@ public class UserController extends HttpServlet {
 
             if(method.equals("sign_up")) sign_up(request, response);
             else if(method.equals("sign_in")) sign_in(request, response);
+            else if (method.equals("carwash")) carwash(request,response);
+            else if (method.equals("otro")) otro(request,response);
     }
 
     protected void sign_up(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -81,5 +83,11 @@ public class UserController extends HttpServlet {
         }
         
     }
+
+    protected void carwash(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+    }
     
+    protected void otro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    }
 }

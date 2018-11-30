@@ -25,10 +25,10 @@ Pendientes Web App:
 tbcarwash:
 
 (PK)(int) codlocal
-(varchar 25) nombre
+(varchar 50) nombre
 (varchar 100) servicios
-(varchar 50) direccion
-(varchar 100) distrito
+(varchar 100) direccion
+(varchar 50) distrito
 (varchar 25) telefono
 (varchar 100) horario
 (varchar 25) disponiblidad
@@ -41,7 +41,7 @@ tbcalificacion:
 
 (PK)(int) codcali
 (int) codlocal
-(int) codusuario
+(int) codusu
 (varchar 300) comentario
 (int) score
 (varchar 25) fecha
@@ -50,9 +50,9 @@ tbcalificacion:
 tbatencion:
 
 (PK)(int) codatencion
-(int) codlocal
 (int) codusuario
-(varchar 25) placa
+(int) codlocal
+(varchar 50) placa
 (varchar 100) servicios
 (varchar 25) estado
 (double) monto

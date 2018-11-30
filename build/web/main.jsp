@@ -42,7 +42,9 @@
             <div class="row">
 
                 <div class="col-sm-4">
+                    
                     <div id="map" class="mapita"></div>
+                    
                     <div class="alert alert-dark" role="alert">
                         Lista de atenciones
                     </div>
@@ -76,7 +78,7 @@
 
                 <div class="col-sm-5">
                     <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                        <a href="carwash.jsp" class="list-group-item list-group-item-action flex-column align-items-start active">
                             <img src="images/carwash_mini1.PNG" class="img-fluid" alt="Responsive image">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">Lavadera Angamos</h5>
