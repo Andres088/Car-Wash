@@ -35,10 +35,8 @@ CREATE TABLE IF NOT EXISTS `tbatencion` (
   CONSTRAINT `FK_atencion_usuario` FOREIGN KEY (`codusu`) REFERENCES `tbusuario` (`codusu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla carwash.tbatencion: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla carwash.tbatencion: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbatencion` DISABLE KEYS */;
-INSERT INTO `tbatencion` (`codatencion`, `codusu`, `codlocal`, `placa`, `servicios`, `estado`, `monto`, `puntos`, `fecha`, `hora`) VALUES
-	(1, 1, 1, '14GH5', 'Masaje prostatico', 'Atendiendo', 200, 2000, '30/11/2018', '06:46');
 /*!40000 ALTER TABLE `tbatencion` ENABLE KEYS */;
 
 -- Volcando estructura para tabla carwash.tbauto
@@ -56,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `tbauto` (
 -- Volcando datos para la tabla carwash.tbauto: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbauto` DISABLE KEYS */;
 INSERT INTO `tbauto` (`placa`, `marca`, `modelo`, `ano`, `codusu`) VALUES
-	('14GH5', 'Toyota', 'Yaris', 2009, 1);
+	('14GH5', 'Toyota', 'Yaris', 2009, 11);
 /*!40000 ALTER TABLE `tbauto` ENABLE KEYS */;
 
 -- Volcando estructura para tabla carwash.tbcalificacion
@@ -101,7 +99,16 @@ CREATE TABLE IF NOT EXISTS `tbcarwash` (
 -- Volcando datos para la tabla carwash.tbcarwash: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbcarwash` DISABLE KEYS */;
 INSERT INTO `tbcarwash` (`codlocal`, `codusu`, `nombre`, `servicios`, `direccion`, `distrito`, `telefono`, `horario`, `disponibilidad`, `latitud`, `longitud`, `imagen`) VALUES
-	(1, 2, 'Las Nenitas', 'Todo papi', 'Av. Venezuela 395', 'Cercado', '999948184', 'Todos los dias', 'Ya mismo', '', NULL, NULL);
+	(1, 1, 'AUTOWASH', 'Lavada, Encerado, Pulido', 'Av. Prol. Iquitos 1738', 'Lince', '2622010', 'L - D  08:00 am - 18:30 pm', 'disponible', '-12.080797', '-77.028648', 'local-01.png'),
+	(2, 2, 'House Car Wash', 'Lavada, Encerado', 'Calle Piura 1181', 'Miraflores', '4479548', 'L - S  08:00 am - 18:00 pm', 'disponible', '-12.11593', '-77.040849', 'local-02.jpg'),
+	(3, 3, 'RS4 Carwash Detailing', 'Lavada', 'Jirón Francisco de Zela 1939', 'Lince', '990016117', 'L - D  08:00 am - 19:00 pm', 'disponible', '-12.083403', '-77.039830', 'local-03.jpg'),
+	(4, 4, 'Car Wash Zurita', 'Lavada, Encerado, Pulido', 'Av. Jose Manuel Iturregui', 'Surquillo', '4468859', 'L - S  09:00 am - 18:00 pm', 'disponible', '-12.105247', '-77.019624', 'local-04.jpg'),
+	(5, 5, 'The Wash Brothers Peru', 'Lavada, Encerado, Pulido, Undercoating', 'Calle San Diego 745', 'Surquillo', '942013318', 'L - D  08:30 am - 17:30 pm', 'disponible', '-12.11772', '-77.018812', 'local-05.jpg'),
+	(6, 6, 'Lava Car Peru', 'Lavada', 'Av. Surco Cuadra 1, lote 4 Urb. Huertos de Camacho', 'Surco', '943444741', 'L - D  07:30 am - 19:00 pm', 'disponible', '-12.147046', '-76.999039', 'local-06.jpg'),
+	(7, 7, 'Vapor Car Wash', 'Lavada, Encerado', 'Av. Brasil 699', 'Jesus Maria', '6789327', 'L - D  08:00 am - 19:00 pm', 'disponible', '-12.066293', '-77.046194', 'local-07.jpg'),
+	(8, 8, 'Pit Stop Peru', 'Lavada, Encerado', 'Avenida San Juan 235', 'La Victoria', '6661895', 'L - D  08:00 am - 19:00 pm', 'disponible', '-12.076379', '-77.009295', 'local-08.png'),
+	(9, 9, 'G&R Car Wash', 'Lavada', 'Av. Ignacio Merino 2376', 'Lince', '963339490', 'L - S  08:00 am - 17:30 pm', 'disponible', '-12.087047', '-77.032067', 'local-09.jpg'),
+	(10, 10, 'Monkey Car Wash & Detailing', 'Lavada, Encerado, Pulido, Undercoating', 'Calle Domingo Orué 770', 'Surquillo', '999014949', 'L - D  08:00 am - 18:00 pm', 'disponible', '-12.10612', '-77.020043', 'local-10.png');
 /*!40000 ALTER TABLE `tbcarwash` ENABLE KEYS */;
 
 -- Volcando estructura para tabla carwash.tbusuario
@@ -116,13 +123,22 @@ CREATE TABLE IF NOT EXISTS `tbusuario` (
   `edad` int(3) NOT NULL DEFAULT '0',
   `sexo` varchar(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codusu`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla carwash.tbusuario: ~1 rows (aproximadamente)
+-- Volcando datos para la tabla carwash.tbusuario: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `tbusuario` DISABLE KEYS */;
 INSERT INTO `tbusuario` (`codusu`, `nomusu`, `pass`, `nom`, `correo`, `telf`, `direc`, `edad`, `sexo`) VALUES
-	(1, 'utp', '123', 'usuario1', 'utp@hotmail.com', '959406132', 'Av. Arequipa 2560 - Centro de Lima', 25, 'Hombre'),
-	(2, 'colaborador1', '123', 'Carlos Perez', 'cperez@robajato.com', '999999999', 'Av. Alfonso Ugarte 345 - Centro de Lima', 29, 'Hombre');
+	(1, 'colaborador1', '123', 'Ismael Gimenez Fernandez', 'colaborador1@hotmail.com', '948184046', 'Av. Brasil 1430', 18, 'Hombre'),
+	(2, 'colaborador2', '123', 'Mario Casas Ferrer', 'colaborador2@hotmail.com', '948184047', 'Av. Brasil 1431', 19, 'Hombre'),
+	(3, 'colaborador3', '123', 'Mario Morales Muñoz', 'colaborador3@hotmail.com', '948184048', 'Av. Brasil 1432', 20, 'Hombre'),
+	(4, 'colaborador4', '123', 'Joan Fuentes Lozano', 'colaborador4@hotmail.com', '948184049', 'Av. Brasil 1433', 21, 'Hombre'),
+	(5, 'colaborador5', '123', 'Raúl Mas Gutierrez', 'colaborador5@hotmail.com', '948184050', 'Av. Brasil 1434', 22, 'Hombre'),
+	(6, 'colaborador6', '123', 'Paula Ruiz Vidal', 'colaborador6@hotmail.com', '948184051', 'Av. Brasil 1435', 23, 'Mujer'),
+	(7, 'colaborador7', '123', 'Aroa Flores Soto', 'colaborador7@hotmail.com', '948184052', 'Av. Brasil 1436', 24, 'Mujer'),
+	(8, 'colaborador8', '123', 'Mara Flores Alvarez', 'colaborador8@hotmail.com', '948184053', 'Av. Brasil 1437', 25, 'Mujer'),
+	(9, 'colaborador9', '123', 'Yaiza Ferrer Garrido', 'colaborador9@hotmail.com', '948184054', 'Av. Brasil 1438', 26, 'Mujer'),
+	(10, 'colaborador10', '123', 'Victoria Alvarez Santiago', 'colaborador10@hotmail.com', '948184055', 'Av. Brasil 1439', 27, 'Mujer'),
+	(11, 'utp', '123', 'David Quevedo Velasco', 'profesor@utp.edu.pe', '948184056', 'Av. Brasil 1440', 28, 'Hombre');
 /*!40000 ALTER TABLE `tbusuario` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
