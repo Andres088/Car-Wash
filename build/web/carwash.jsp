@@ -51,7 +51,22 @@
         <div class="row">-</div>
         <div class="row">
             <div class="col-sm-3"></div>
-            <div class="col-sm-7">
+            <div class="col-sm-3">
+                <h4>Califica este local</h4>
+                <form action="Controller" method="post">
+                    <input type="hidden" name="method" value="">
+                    <div class="form-group">
+                        <label for="customRange2">Puntuacion (malo - bueno) </label>
+                        <input type="range" class="custom-range" min="0" max="5" id="customRange2" name="score">
+                    </div>
+                    <div class="form-group">
+                        <label for="comentario">Comentario</label>
+                        <input type="text" class="form-control" placeholder="" id="comentario" name="comentario">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calificar</button>  
+                </form>  
+            </div>
+            <div class="col-sm-4">
                 <div class="alert alert-dark" role="alert">
                     Calificaciones
                 </div>
@@ -83,7 +98,6 @@
             <div class="col-sm-2"></div>
         </div>
 
-    </div>
     <div class="footer">
         <p>Copyright (c) 2008</p>
     </div>
