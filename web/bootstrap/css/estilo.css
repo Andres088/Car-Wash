@@ -24,6 +24,20 @@ body {
 
 /*https://stackoverflow.com/questions/21324395/bootstrap-3-flush-footer-to-bottom-not-fixed/31171291*/
 
+.big-icon {
+    font-size: 40px;
+    
+}
+
+.prueba{
+ 
+}
+
+.atencion{
+    overflow: hidden;
+}
+
+
 .jumbito{
     background-color: #60d0e7;
     
