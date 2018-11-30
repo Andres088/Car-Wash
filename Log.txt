@@ -1,67 +1,15 @@
 Pendientes Web App:
 
-- Corregir base de datos (prioritario)
-
-  * Quitar tbcarwash antiguo
-  * Quitar lavador y servlavado
-  * Colocar nuevo carwash tal como se menciona abajo
-  * Agregar tbcalificacion y tbatencion
-
 - Culminar módulo de registro
 
 - Habilitar lista dinámica de locales carwash
 
 - Habilitar módulo de visualización de carwash (incluye foto del local, toda informacion del local y ubicacion en Google Maps del local, de preferencia que trace una ruta de manejo entre la ubicación actual y la del local). 
 
-- Opcional: al final del módulo de visualización del carwash deben aparecer una lista de calificaciones de todos los clientes y además la opción para agregar una calificación propia (solo debería aparecer la opción de calificar si es que el usuario registra una atención en ese local y máximo una calificación por usuario por local).
+- Al final del módulo de visualización del carwash deben aparecer una lista de calificaciones de todos los clientes y además la opción para agregar una calificación propia (solo debería aparecer la opción de calificar si es que el usuario registra una atención en ese local y máximo una calificación por usuario por local).
 
-- Habilitar módulo de empleado para agregar atenciones (solo para un usuario específico que será un empleado del local y no un cliente). Cuando el empleado se loguee, solo podrá ver este módulo. Al final debe de aparecer una lista donde se muestren todas las atenciones.
+- En la vista atencion.jsp falta activar la funcion del servlet para cambiar el estado de la Atencion a "atendiendo", "culminado" o "cancelado".
 
 - Habilitar listado de atenciones en la vista main
 
-- Crear y colocar logo
-
-
-////////// Tablas para agregar ///////////
-
-tbcarwash:
-
-(PK)(int) codlocal
-(varchar 50) nombre
-(varchar 100) servicios
-(varchar 100) direccion
-(varchar 50) distrito
-(varchar 25) telefono
-(varchar 100) horario
-(varchar 25) disponiblidad
-(varchar 25) latitud
-(varchar 25) longitud
-(varchar 25) imagen
-
-
-tbcalificacion:
-
-(PK)(int) codcali
-(int) codlocal
-(int) codusu
-(varchar 300) comentario
-(int) score
-(varchar 25) fecha
-(varchar 25) hora
-
-tbatencion:
-
-(PK)(int) codatencion
-(int) codusuario
-(int) codlocal
-(varchar 50) placa
-(varchar 100) servicios
-(varchar 25) estado
-(double) monto
-(int) puntos 
-(varchar 25) fecha
-(varchar 25) hora
-
-Referencias API Google Maps:
-
-https://developers.google.com/maps/documentation/
+- Crear y colocar logo de CarWash.
