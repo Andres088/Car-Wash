@@ -19,6 +19,8 @@ Pendientes Web App:
 
 - Habilitar listado de atenciones en la vista main
 
+- Crear y colocar logo
+
 
 ////////// Tablas para agregar ///////////
 

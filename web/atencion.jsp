@@ -1,4 +1,5 @@
-<%@page import="Model.Usuario"%>
+<%@page import="Model.*"%>
+<%@page import="java.util.ArrayList"%>
 
 <html>
     <head>
@@ -12,7 +13,20 @@
     <body>
         <%
             Usuario user = (Usuario) request.getAttribute("user");
-            String empresa = (String) request.getAttribute("specifications");
+            CarWash empresa = (CarWash) request.getAttribute("carwash");
+            if (empresa== null){
+                empresa = new CarWash();
+                empresa.setNombre("");
+                empresa.setDireccion("");
+                empresa.setHorario("");
+                empresa.setCodlocal(0);
+            }
+            if (user==null){
+                user = new Usuario();
+                user.setCodusu(0);
+                user.setNom("");
+            }
+            ArrayList<Atencion> atenciones = (ArrayList<Atencion>)request.getAttribute("atenciones");
         %>
 
         <div class="jumbotron text-center jumbito">
@@ -43,18 +57,21 @@
                 <div class="col-xl-4">
                     <h4>Registrar atencion</h4>
                     <form action="Controller" method="post">
-                        <input type="hidden" name="method" value="sign_in">	
+                        <input type="hidden" name="method" value="atencion_registrar">
+                        <input type="hidden" name="carwash" value="<%=empresa.getCodlocal()%>">	
+                        <input type="hidden" name="colaborador" value="<%=user.getCodusu()%>">	
+                        
                         <div class="form-group">
-                            <label>Codigo de Cliente</label>
-                            <input type="text" class="form-control" placeholder="" name="name">
+                            <label>Usuario del cliente</label>
+                            <input type="text" class="form-control" placeholder="" name="nomusu">
                         </div>
                         <div class="form-group">
-                            <label>Servicios</label>
-                            <input type="text" class="form-control" placeholder="" name="name">
+                            <label>Servicios prestados</label>
+                            <input type="text" class="form-control" placeholder="" name="servicios">
                         </div>
                         <div class="form-group">
-                            <label>Monto</label>
-                            <input type="text" class="form-control" placeholder="" name="name">
+                            <label>Monto total</label>
+                            <input type="text" class="form-control" placeholder="" name="monto">
                         </div>
                         <button type="submit" class="btn btn-primary">Registrar</button>  
                     </form>        
@@ -64,8 +81,9 @@
                     <div class="card">
                         <img class="card-img-top " src="images/carwash_mini3.jpg" alt="">
                         <div class="card-body">
-                            <h5 class="card-title"><%=empresa%></h5>
-                            <p class="card-text">Información del CarWash</p>
+                            <h5 class="card-title"><%=empresa.getNombre()%></h5>
+                            <p class="card-text"><%=empresa.getDireccion()%></p>
+                            <p class="card-text"><%=empresa.getHorario()%></p>
                         </div>
                     </div> 
                 </div>
@@ -88,58 +106,53 @@
             <div class="row">
                 <div class="col-xl-1"></div>
                 <div class="col-xl-10">
+                    
+                    
+                    
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Hora</th>
                                 <th scope="col">Usuario</th>
-                                <th scope="col">Nombres</th>
                                 <th scope="col">Placa</th>
-                                <th scope="col">Servicio</th>
+                                <th scope="col">Servicios</th>
                                 <th scope="col">Monto</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Modificar</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>
-                                    <a href="#"><i class="far fa-calendar-minus"></i></a>
-                                    <a href="#"><i class="far fa-calendar-times"></i></a>
-                                    <a href="#"><i class="fas fa-check"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                            </tr>
-                            <tr>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                                <td>En proceso</td>
-                            </tr>
+                            <% 
+                                if(atenciones!= null)
+                                {
+                                    for (Atencion atencion: atenciones)
+                                    {
+                                    %>
+                                        <tr>
+                                            <td><%=atencion.getFecha()%></td>
+                                            <td><%=atencion.getHora()%></td>
+                                            <td><%=atencion.getCodusuario()%></td>
+                                            <td><%=atencion.getPlaca()%></td>
+                                            <td><%=atencion.getServicios()%></td>
+                                            <td><%=atencion.getMonto()%></td>
+                                            <td><%=atencion.getEstado()%></td> 
+                                            <td>
+                                                <a href="Controller?method=atencion_modificar&codatencion=<%=atencion.getCodatencion()%>&estado=cancelado">
+                                                    <i class="far fa-calendar-minus"></i>
+                                                </a>
+                                                <a href="Controller?method=atencion_modificar&codatencion=<%=atencion.getCodatencion()%>&estado=atendiendo">
+                                                    <i class="far fa-calendar-times"></i>
+                                                </a>
+                                                <a href="Controller?method=atencion_modificar&codatencion=<%=atencion.getCodatencion()%>&estadoculminado">
+                                                    <i class="fas fa-check"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <%
+                                    }
+                                }
+                            %>
                         </tbody>
                     </table>
                 </div>

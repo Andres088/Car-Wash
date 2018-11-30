@@ -7,8 +7,8 @@ public class Auto {
     private String placa;
     private String marca;
     private String modelo;
-    private String des;
-    private String dni;
+    private int ano;
+    private int codusu;
 
     public String getPlaca() {
         return placa;
@@ -34,20 +34,22 @@ public class Auto {
         this.modelo = modelo;
     }
 
-    public String getDes() {
-        return des;
+    public int getAno() {
+        return ano;
     }
 
-    public void setDes(String des) {
-        this.des = des;
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
-    public String getDni() {
-        return dni;
+    public int getCodusu() {
+        return codusu;
     }
 
-    public void setDni(String dni) {
-        this.dni = dni;
+    public void setCodusu(int codusu) {
+        this.codusu = codusu;
     }
+
+
     
 }
