@@ -9,12 +9,13 @@
 
     <body>
 
-        <% Usuario user = (Usuario) request.getAttribute("user");
+        <% 
+            Usuario user = (Usuario) request.getAttribute("user");
             String specifications = (String) request.getAttribute("specifications");
         %>  
 
         <script src="geolocation/geolocation.js" type="text/javascript"></script>
-        <script async defer
+        <script async dfeer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA1UInbb8xXBD-7e-1lXM3bO_QoMn-VhM&callback=initMap">
         </script>
 
@@ -79,7 +80,7 @@
 
                 <div class="col-sm-5">
                     <div class="list-group">
-                        <a href="carwash.jsp" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <a href="Controller?method=carwash_detalle" class="list-group-item list-group-item-action flex-column align-items-start">
                             <img src="images/carwash_mini1.PNG" class="img-fluid" alt="Responsive image">
                             <div class="d-flex w-100 justify-content-between">
                                 <h5 class="mb-1">Lavadero Angamos</h5>

@@ -45,6 +45,9 @@ public class Controller extends HttpServlet {
         else if (method.equals("atencion_modificar")) {
             atencion_modificar(request, response);
         } 
+        else if (method.equals("carwash_detalle")) {
+            carwash_detalle(request, response);
+        } 
         else if (method.equals("otro")) {
             otro(request, response);
         }
@@ -74,9 +77,16 @@ public class Controller extends HttpServlet {
 
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-
+        
         DataBase db = new DataBase();
         HttpSession session = request.getSession();
+        
+        String latitud = request.getParameter("latitud");
+        String longitud = request.getParameter("longitud");
+        String[] posicion = new String[2];
+        posicion[0] = latitud;
+        posicion[1] = longitud;
+        session.setAttribute("posicion", posicion);
         
 
         if (db.confirmar_Usuario(name, password)) {
@@ -100,7 +110,8 @@ public class Controller extends HttpServlet {
             if (auto!=null) {
                 specifications = auto.getMarca() + " " + auto.getModelo();
             }
-
+            
+            request.setAttribute("posicion", posicion); // OJO
             request.setAttribute("specifications", specifications);
             request.getRequestDispatcher("/main.jsp").forward(request, response);
 
@@ -171,6 +182,22 @@ public class Controller extends HttpServlet {
         
     }
 
+    protected void carwash_detalle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        DataBase db = new DataBase();
+        
+        HttpSession session = request.getSession();
+        String[] posicion = (String[])session.getAttribute("posicion");
+        
+        CarWash local = db.buscar_CarWash(1);
+        
+        request.setAttribute("local", local);
+        request.setAttribute("posicion", posicion);
+        request.getRequestDispatcher("/carwash.jsp").forward(request, response);
+        
+        
+    }
+    
     protected void otro(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
     

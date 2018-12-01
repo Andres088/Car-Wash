@@ -1,4 +1,4 @@
-<%@page import="Model.Usuario"%>
+<%@page import="Model.*"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,11 +8,17 @@
     </head>
 
     <body>
-
-        <script src="geolocation/geolocation.js" type="text/javascript"></script>
-        <script async defer
-                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA1UInbb8xXBD-7e-1lXM3bO_QoMn-VhM&callback=initMap">
-        </script>
+        
+        <% 
+            String[] mi_posicion = (String[])request.getAttribute("posicion");
+            CarWash local = (CarWash)request.getAttribute("local");
+            
+            String yo_lat = mi_posicion[0];
+            String yo_long = mi_posicion[1];
+            String local_lat = local.getLatitud();
+            String local_long = local.getLongitud();
+            
+        %>
 
         <div class="jumbito">
             <img src="images/logo.PNG" class="centro" alt="Buscador Car-Wash">
@@ -20,7 +26,7 @@
         <div class="container">
             <div class="row filita"> 
                 <div class="col-sm-5"></div>
-                <div class="col-sm-3 font-italic"><h4>Detalle del local</h4></div>
+                <div class="col-sm-3 font-italic"><h4 id="cambio">Detalle del local</h4></div>
                 <div class="col-sm-4"></div>
             </div>
         
@@ -100,5 +106,40 @@
     <div class="footer">
         <p>Copyright (c) 2008</p>
     </div>
+        
+    
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA1UInbb8xXBD-7e-1lXM3bO_QoMn-VhM&callback=muestraRuta">
+    </script>  
+    <script>
+        function muestraRuta() {
+
+            var directionsDisplay = new google.maps.DirectionsRenderer;
+            var directionsService = new google.maps.DirectionsService;
+
+            var map = new google.maps.Map(document.getElementById('map'), {zoom: 15, center: {lat: -12.080797, lng: -77.028648}});
+
+            directionsDisplay.setMap(map);
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+            document.getElementById('mode').addEventListener('change', function() {
+              calculateAndDisplayRoute(directionsService, directionsDisplay);
+            });
+        }
+
+        function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+            var ori_la = <%=yo_lat%>;
+            var ori_lo = <%=yo_long%>;
+            var des_la = <%=local_lat%>;
+            var des_lo = <%=local_long%>;
+            var selectedMode = 'DRIVING';
+
+            directionsService.route({
+                origin: {lat: ori_la, lng: ori_lo},  
+                destination: {lat: des_la, lng: des_lo},  
+                travelMode: google.maps.TravelMode[selectedMode]}, 
+                function(response, status) {
+                if (status == 'OK') {directionsDisplay.setDirections(response);
+                }else {window.alert('Directions request failed due to ' + status);}});}
+    </script>
 </body>
 </html>

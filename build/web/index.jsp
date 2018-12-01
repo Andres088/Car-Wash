@@ -15,6 +15,13 @@
         <div class="jumbito">
             <img src="images/logo.PNG" class="centro" alt="Buscador Car-Wash">
         </div>
+        
+        <script src="geolocation/location.js" type="text/javascript"></script>
+        <script async dfeer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA1UInbb8xXBD-7e-1lXM3bO_QoMn-VhM&callback=findLocation">
+        </script>
+        
+        
         <div class="container">
             
             <div class="row">
@@ -24,7 +31,9 @@
                 <div class="col-sm-6 login">
                     <form action="Controller" method="post">
 
-                        <input type="hidden" name="method" value="sign_in">	
+                        <input type="hidden" name="method" value="sign_in">
+                        <input type="hidden" name="latitud" id="latitud" value="">
+                        <input type="hidden" name="longitud" id="longitud" value="">
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Usuario</label>
@@ -39,6 +48,8 @@
                     </form>
                     <h5><%=respuesta%></h5>
                 </div>
+                
+                
             </div>
         </div> 
 
