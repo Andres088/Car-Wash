@@ -39,9 +39,19 @@ body {
 
 
 .jumbito{
+    margin-bottom: 2%;
     background-color: #60d0e7;
+    height: 24%;
+  
     
 }
+
+.centro {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+} 
 
 .login{
     padding-right: 20%;

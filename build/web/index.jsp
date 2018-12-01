@@ -12,10 +12,11 @@
             }
         %>
 
-        <div class="jumbotron text-center jumbito">
-            <h1>Car Wash Location</h1>
+        <div class="jumbito">
+            <img src="images/logo.PNG" class="centro" alt="Buscador Car-Wash">
         </div>
         <div class="container">
+            
             <div class="row">
                 <div class="col-sm-6">
                     <img src="images/carwash1.png" class="img-fluid" alt="Responsive image">
@@ -34,7 +35,7 @@
                             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingrese su contraseña" name="password">
                         </div>
                         <button type="submit" class="btn btn-primary">Ingresar</button>  
-                        <a href="/Car_Wash/register.jsp" class="btn btn-secondary">Registrar</a>
+                        <a href="register.jsp" class="btn btn-secondary">Registrar</a>
                     </form>
                     <h5><%=respuesta%></h5>
                 </div>

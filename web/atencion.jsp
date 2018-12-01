@@ -29,8 +29,8 @@
             ArrayList<Atencion> atenciones = (ArrayList<Atencion>)request.getAttribute("atenciones");
         %>
 
-        <div class="jumbotron text-center jumbito">
-            <h1>Car Wash Location</h1>
+        <div class="jumbito">
+            <img src="images/logo.PNG" class="centro" alt="Buscador Car-Wash">
         </div>
 
         <div class="container">
@@ -132,7 +132,7 @@
                                         <tr>
                                             <td><%=atencion.getFecha()%></td>
                                             <td><%=atencion.getHora()%></td>
-                                            <td><%=atencion.getCodusuario()%></td>
+                                            <td>andres</td>
                                             <td><%=atencion.getPlaca()%></td>
                                             <td><%=atencion.getServicios()%></td>
                                             <td><%=atencion.getMonto()%></td>

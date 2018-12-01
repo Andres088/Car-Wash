@@ -52,22 +52,22 @@ public class Controller extends HttpServlet {
 
     protected void sign_up(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
           
-        String name = request.getParameter("name");
-        String email = request.getParameter("email");
-        String telefono = request.getParameter("telefono");
-        String direccion = request.getParameter("direccion");
-        int edad = Integer.parseInt(request.getParameter("edad"));
-        String sexo1 = request.getParameter("sexo1");
-        String sexo2 = request.getParameter("sexo2");
-        String sexo = "Hombre";
-        if (sexo2.equals("mujer")) {
-            sexo = "Mujer";
-        }
+//        String name = request.getParameter("name");
+//        String email = request.getParameter("email");
+//        String telefono = request.getParameter("telefono");
+//        String direccion = request.getParameter("direccion");
+//        int edad = Integer.parseInt(request.getParameter("edad"));
+//        String sexo1 = request.getParameter("sexo1");
+//        String sexo2 = request.getParameter("sexo2");
+//        String sexo = "Hombre";
+//        if (sexo2.equals("mujer")) {
+//            sexo = "Mujer";
+//        }
 
         DataBase db = new DataBase();
 
         // Falta terminar
-        request.getRequestDispatcher("/new-account.jsp").forward(request, response);
+        request.getRequestDispatcher("/new-car.jsp").forward(request, response);
     }
 
     protected void sign_in(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

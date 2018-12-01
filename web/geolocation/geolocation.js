@@ -14,12 +14,14 @@
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
             var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
+              //lat: position.coords.latitude,
+              //lng: position.coords.longitude
+              lat: -12.113223, 
+              lng: -77.018751 
             };
 
             infoWindow.setPosition(pos);
-            infoWindow.setContent('Estas aqui');
+            infoWindow.setContent('Ubicacion del local');
             infoWindow.open(map);
             map.setCenter(pos);
           }, function() {

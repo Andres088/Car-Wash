@@ -7,15 +7,16 @@
     </head>
     <body>
 
-        <div class="jumbotron text-center jumbito">
-            <h1>Car Wash Location</h1>
+        <div class="jumbito">
+            <img src="images/logo.PNG" class="centro" alt="Buscador Car-Wash">
         </div>
         <div class="container">
             <div class="row">
 
                 <div class="col-sm-6">
+                    <h4>Registra tu usuario</h4><br>
 
-                    <form action="UserController" method="post">
+                    <form action="Controller" method="post">
 
                         <input type="hidden" name="method" value="sign_up">
 
@@ -53,7 +54,7 @@
 
                 <div class="col-sm-6">
                     <img src="images/carwash2.jpg" class="img-fluid" alt="Responsive image">
-                    <p>Texto sobre los beneficios de la app (estadísticas, porcentajes, etc.)</p>
+                    <p>¡Únete ya para que encuentres los mejores CarWash al toque!</p>
                 </div>
             </div>
             <div class="push"></div>

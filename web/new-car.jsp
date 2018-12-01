@@ -7,15 +7,14 @@
     </head>
     <body>
 
-        <div class="jumbotron text-center jumbito">
-            <h1>Car Wash Location</h1>
+        <div class="jumbito">
+            <img src="images/logo.PNG" class="centro" alt="Buscador Car-Wash">
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-sm-4"></div>
 
-                <div class="col-sm-4">
-                    <h3>Registra tu carro :)</h3><br>
+                <div class="col-sm-6">
+                    <h4>Ahora registra tu carro :)</h4><br>
                     <form>         
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Placa">
@@ -44,11 +43,15 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Año">
                         </div>
-                        <button type="submit" class="btn btn-primary">Registrarse</button>
-                        <a href="principal.jsp">Registrarse</a>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
                     </form>
+
                 </div>
-                <div class="col-sm-4"></div>
+
+                <div class="col-sm-6">
+                    <img src="images/carwash2.jpg" class="img-fluid" alt="Responsive image">
+                    <p>¡Únete ya para que encuentres los mejores CarWash al toque!</p>
+                </div>
             </div>
             <div class="push"></div>
         </div>

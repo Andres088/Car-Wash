@@ -18,8 +18,8 @@
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCA1UInbb8xXBD-7e-1lXM3bO_QoMn-VhM&callback=initMap">
         </script>
 
-        <div class="jumbotron text-center jumbito">
-            <h1>Car Wash Location</h1>
+        <div class="jumbito">
+            <img src="images/logo.PNG" class="centro" alt="Buscador Car-Wash">
         </div>
         <div class="container">
             <div class="row filita"> 
@@ -82,7 +82,7 @@
                         <a href="carwash.jsp" class="list-group-item list-group-item-action flex-column align-items-start">
                             <img src="images/carwash_mini1.PNG" class="img-fluid" alt="Responsive image">
                             <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">Lavadera Angamos</h5>
+                                <h5 class="mb-1">Lavadero Angamos</h5>
                                 <small>Score: 4.8/5</small>
                             </div>
                             <p class="mb-1">Servicios ofrecidos: aspirado, planchado, lavado.</p>
